@@ -1,33 +1,3 @@
-
-#Una empresa factura a sus clientes el último día de cada mes. Si el cliente paga
-#su factura dentro de los primeros 10 días del mes siguiente, tiene un descuento
-#de $120 o del 2% de la factura, lo que resulte menor. Si paga en los siguientes
-#10 días del mes deberá pagar el importe original de la factura, mientras que si
-#paga después del día 20 deberá abonar una multa de $150 o del 10% de su factura,
-#lo que resulte mayor. Desarrolle un programa que lea el número del cliente
-#y el total de la factura, y emita un informe donde conste el número del cliente y
-#los tres importes que podrá abonar según la fecha de pago.
-
-nCliente = int(input('Ingrese el numero de cliente'))
-tFactura = float(input('Ingrese el total de la factura'))
-
-print("El cliente numero",nCliente,"Debera abonar")
-
-if tFactura * 0.02 < 120:
-    total = tFactura - tFactura *0.02
-else:
-    total = tFactura - 120
-print("Si paga del 1 al 10",total)
-print("Si paga del 11 al 20",tFactura)
-if tFactura * 0.1 > 150:
-    total = tFactura + tFactura *0.1
-else:
-    total = tFactura + 150
-print("Si paga del 21 en adelante",total)
-
-
-
-
 #Ejercicio 1: Ingresar dos números A y B e imprimir el mayor, o cualquiera si son iguales.
 def ej1():
     a = float(input("Ingrese un numero"))
@@ -60,8 +30,8 @@ def ej3():
 #Ejercicio 4: Ingresar dos números enteros A y B. Desarrollar un programa que determine si
 #A es múltiplo de B y si B es múltiplo de A. Imprimir mensajes aclaratorios.
 def ej4():
-    a = float(input("Ingrese un numero"))
-    b = float(input("Ingrese un numero"))
+    a = float(input("Ingrese un numero A "))
+    b = float(input("Ingrese un numero B "))
     if(a%b==0):
         print('A es multiplo de B')
     else:
@@ -117,10 +87,16 @@ def ej7():
     cant=int(input('Ingrese la cantidad de productos a comprar'))
     pBase=float(input('Ingrese el precio base del producto'))
     total = 0
-    if(cant>100):
-        total = (cant - 100) * (pBase-pBase*0.25)
+    d1 = pBase-pBase*0.1
+    d2 = pBase-pBase*0.25
     
-    
+    if(cant<13):
+        total = cant * pBase
+    elif(cant < 101):
+        total = 12 * pBase + (cant-12) * d1
+    else:
+        total = 12 * pBase + 88 * d1 + (cant-100) * d2
+    print("El total es de",total,"y el promedio es de",total/cant) 
 
 #Ejercicio 8: Una empresa factura a sus clientes el último día de cada mes. Si el cliente paga
 #su factura dentro de los primeros 10 días del mes siguiente, tiene un descuento
@@ -130,14 +106,47 @@ def ej7():
 #lo que resulte mayor. Desarrolle un programa que lea el número del cliente
 #y el total de la factura, y emita un informe donde conste el número del cliente y
 #los tres importes que podrá abonar según la fecha de pago.
+def ej8 ():
+    nCliente = int(input('Ingrese el numero de cliente'))
+    tFactura = float(input('Ingrese el total de la factura'))
+
+    print("El cliente numero",nCliente,"debera abonar")
+
+    if tFactura * 0.02 < 120:
+        total = tFactura - tFactura *0.02
+    else:
+        total = tFactura - 120
+    print("Si paga del 1 al 10",total)
+    print("Si paga del 11 al 20",tFactura)
+    if tFactura * 0.1 > 150:
+        total = tFactura + tFactura *0.1
+    else:
+        total = tFactura + 150
+    print("Si paga del 21 en adelante",total)
 
 #Ejercicio 9: Leer un número correspondiente a un año e imprimir un mensaje indicando si es
 #bisiesto o no. Se recuerda que un año es bisiesto cuando es divisible por 4. Sin
 #embargo, aquellos años que sean divisibles por 4 y también por 100 no son bisiestos,
 #a menos que también sean divisibles por 400. Por ejemplo, 1900 no fue
 #bisiesto pero sí el 2000.
-
-#Ejercicio 10: Desarrollar un programa para leer las longitudes de los tres lados de un triángulo
+def ej9():
+    y=int(input("Ingrese un año para verificar si es bisiesto "))
+    b=0
+    if(y%4==0):
+        if(y%100==0):
+            if(y%400==0):
+                b=1
+        else:
+            b=1
+            
+    if(b==1):
+        print("Es bisiesto")
+    else:
+        print("No es bisiesto")
+        
+        
+#Ejercicio 10: Desarrollar un programa para leer las
+#longitudes de los tres lados de un triángulo
 #L1, L2, L3 y determinar qué tipo de triángulo es según la siguiente clasificación:
 #· Si A >= B + C no se trata de un triángulo.
 #· Si A² = B² + C² se trata de un triángulo rectángulo.
@@ -145,6 +154,14 @@ def ej7():
 #· Si A² < B² + C² se trata de un triángulo acutángulo.
 #Tener en cuenta que A denota el mayor de los lados L1, L2 y L3, mientras que B
 #y C corresponden a los dos lados restantes.
+def ej10():
+    l1 = float(input("ingrese lado 1")
+    l2 = float(input("ingrese lado 2")
+    l3 = float(input("ingrese lado 3")
+    a = 0
+    if(l1 > l2 and l1 > l3):
+        a = l1
+               
 
 #Ejercicio 11: La fecha de Pascua para un año cualquiera X puede determinarse mediante el
 #siguiente algoritmo:
@@ -184,7 +201,48 @@ def ej7():
 #Sueldo Neto 999,99
 
 
-
+print("Ingrese el numero de ejercicio a ejecutar: \n1:Ingresar dos números A y B e imprimir el mayor")
+print("2:Leer un número entero A e imprimir un mensaje indicando si es par o impar")
+print("3:Leer un número entero N y determinar si es un número natural")
+print("4:Ingresar dos numeros, son multiplos entre si?")
+print("5:Calcular superficie de un triangulo")
+print("6:Calcular costo de publicar un libro")
+print("7:Calcular descuentos por cantidad")
+print("8:Calcular descuentos o penalidades por fecha de pago")
+print("9:Es bisiesto?")
+print("10:Determinar el tipo de traingulo")
+print("11:Calcular la fecha de las pascuas")
+print("12:Chequear formato de fecha valido")
+print("13:Liquidar sueldo")
+ej = int(input("Ingrese el numero de ejercicio a resolver "))
+if(ej==1):
+    ej1()
+elif(ej==2):
+    ej2()
+elif(ej==3):
+    ej3()
+elif(ej==4):
+    ej4()
+elif(ej==5):
+    ej5()
+elif(ej==6):
+    ej6()
+elif(ej==7):
+    ej7()
+elif(ej==8):
+    ej8()
+elif(ej==9):
+    ej9()
+elif(ej==10):
+    ej10()
+elif(ej==11):
+    ej11()
+elif(ej==12):
+    ej12()
+elif(ej==13):
+    ej13()
+else:
+    print("Fuera de rango")
 
 
 
