@@ -155,12 +155,26 @@ def ej9():
 #Tener en cuenta que A denota el mayor de los lados L1, L2 y L3, mientras que B
 #y C corresponden a los dos lados restantes.
 def ej10():
-    l1 = float(input("ingrese lado 1")
-    l2 = float(input("ingrese lado 2")
-    l3 = float(input("ingrese lado 3")
-    a = 0
-    if(l1 > l2 and l1 > l3):
-        a = l1
+    lA = float(input("ingrese lado 1"))
+    lB = float(input("ingrese lado 2"))
+    if lB>lA:
+        aux = lB
+        lB = lA
+        lA = aux
+    lC = float(input("ingrese lado 3"))
+    if lC>lA:
+        aux = lC
+        lC = lA
+        lA = aux
+    
+    if lA >= lB+lC:
+        print('No es un triangulo')
+    elif lA**2 == lB**2 + lC**2:
+        print('Es un triangulo rectangulo')
+    elif lA**2 > lB**2 + lC**2:
+        print('Es un triangulo obtusangulo')
+    else:
+        print('Es un triangulo acutangulo')
                
 
 #Ejercicio 11: La fecha de Pascua para un año cualquiera X puede determinarse mediante el
@@ -179,6 +193,18 @@ def ej10():
 #mes de Abril. Ejemplo: Un resultado 35 significa que Pascua cae el 4 de
 #Abril (35 menos los 31 días del mes de Marzo es igual a 4).
 #Preparar un programa que permita ingresar el año y calcule la fecha de Pascua.
+def ej11():
+    x = int(input('Ingrese un año para calcular la fecha de pascua'))
+    a = x % 19
+    b = x % 4
+    c = x % 7
+    d = (a*19 + 24)%30
+    e = (b*2 + c*4 + d*6 + 5)%7
+    p = d+e+22
+    if p > 31:
+        print('Las pascuas son el', p-31,'de Abril')
+    else:
+        print('Las pascuas son el',p,'de Abril')
 
 #Ejercicio 12: Leer tres números correspondientes al día, mes y año de una fecha e imprimir
 #un mensaje indicando si la fecha es válida o no.
